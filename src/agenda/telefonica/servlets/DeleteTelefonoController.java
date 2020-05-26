@@ -49,7 +49,7 @@ public class DeleteTelefonoController extends HttpServlet {
 	    	UsuarioDAO usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
 	    	String correo = request.getParameter("correo");
 	    	Usuario user = usuarioDAO.findByCorreo(correo);
-	    	Set<Telefono> telefonos=telefonoDAO2.findByUsuarioId(user.getCedula());
+	    	java.util.List<Telefono> telefonos= telefonoDAO2.findByUsuarioId(user.getCedula());
 	    	request.setAttribute("telefonos", telefonos);
 	        url = "/JSP/TelefonosList.jsp";
 			

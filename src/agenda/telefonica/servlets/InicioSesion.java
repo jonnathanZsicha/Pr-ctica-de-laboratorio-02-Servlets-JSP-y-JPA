@@ -1,6 +1,7 @@
 package agenda.telefonica.servlets;
 
 
+import java.awt.List;
 import java.io.IOException;
 
 import java.util.Set;
@@ -52,6 +53,7 @@ public class InicioSesion extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String correobusqueda = request.getParameter("correo");
 		Usuario user = usuarioDAO.findByCorreo(correobusqueda);
+		System.out.println(user);
 		String url = null;
 		try {
 			if (user != null) {
@@ -68,7 +70,7 @@ public class InicioSesion extends HttpServlet {
 					if ((correo.equals(request.getParameter("correo"))) && (password.equals(request.getParameter("password")))  ) {
 						boolean bool =  (boolean) session.getAttribute("acceso");
 						System.out.println("creacion 1ra sesion acceso :"+ bool);
-				       Set<Telefono> telefonos=telefonoDAO.findByUsuarioId(user.getCedula());
+				       java.util.List<Telefono> telefonos=telefonoDAO.findByUsuarioId(user.getCedula());
 				       System.out.println("estos son todos los telefonos" + telefonos);
 				        request.setAttribute("telefonos", telefonos);
 				        /*
@@ -78,10 +80,12 @@ public class InicioSesion extends HttpServlet {
 						url = "/JSP/TelefonosList.jsp";
 					}	
 				}else {
+					System.out.println("estas en el else");
+					
 					if ((correo.equals(request.getParameter("correo"))) && (password.equals(request.getParameter("password")))  ) {
 						session.setAttribute("correo",correo );
 						session.setAttribute("cedula",cedula );
-						Set<Telefono> telefonos=telefonoDAO.findByUsuarioId(user.getCedula());
+						 java.util.List<Telefono> telefonos=telefonoDAO.findByUsuarioId(user.getCedula());
 						System.out.println(telefonos);
 						request.setAttribute("telefonos", telefonos);
 						url = "/JSP/TelefonosList.jsp";
@@ -93,6 +97,7 @@ public class InicioSesion extends HttpServlet {
 			
 		}catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("este es el errror " + e);
 			url= "/Html/login.html";
 		}
 		System.out.println(url);

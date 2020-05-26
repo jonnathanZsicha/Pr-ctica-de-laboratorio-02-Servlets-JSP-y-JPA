@@ -50,7 +50,7 @@ public class ActualizarTelefonoControler extends HttpServlet {
 	        telefonoDAO.update(telf);
 	        System.out.println("se ha actualizado el telefono");
 	        
-	    	Set<Telefono> telefonos=telefonoDAO.findByUsuarioId(user.getCedula());
+	        java.util.List<Telefono> telefonos=telefonoDAO.findByUsuarioId(user.getCedula());
 	    	request.setAttribute("telefonos", telefonos);
 	        url = "/JSP/TelefonosList.jsp";
 	        request.getRequestDispatcher(url).forward(request, response);

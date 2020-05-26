@@ -1,6 +1,7 @@
 package agenda.telefonica.servlets;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -44,7 +45,7 @@ public class BuscarTelefonoController extends HttpServlet {
 		
     	System.out.println("ha llegado a buscar un telefono");
     	String numero = request.getParameter("numero");
-		Set<Telefono> telefonos =telefonoDAO.findByNumero(numero);
+    	java.util.List<Telefono> telefonos = telefonoDAO.findByNumero(numero);
     	request.setAttribute("telefonos", telefonos);
 		System.out.print("telefono econtrado");
         url = "/JSP/TelefonosList.jsp";

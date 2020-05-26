@@ -57,7 +57,7 @@ public class NewTelefonoController extends HttpServlet {
 		System.out.println("telefono ?"+tel);
 		telefonoDAO.create(tel);
 		System.out.print("\n---Creación de telefono\n");
-		Set<Telefono> telefonos=telefonoDAO.findByUsuarioId(user.getCedula());
+		java.util.List<Telefono> telefonos= telefonoDAO.findByUsuarioId(user.getCedula());
 	       System.out.println("estos son todos los telefonos" + telefonos);
 	        request.setAttribute("telefonos", telefonos);
 	        url = "/JSP/TelefonosList.jsp";

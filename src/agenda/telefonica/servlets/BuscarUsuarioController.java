@@ -59,7 +59,7 @@ public class BuscarUsuarioController extends HttpServlet {
 				request.setAttribute("usuario", usuario);
 				System.out.println("ha buscado este usuario"+usuario);
 				
-				Set<Telefono> telefonos = telefonoDAO.findByUsuarioId(usuario.getCedula());
+				java.util.List<Telefono> telefonos = telefonoDAO.findByUsuarioId(usuario.getCedula());
 				request.setAttribute("telefonos", telefonos);
 				System.out.println("ha ontenido las siguentes telefonos"+telefonos);
 				url = "/JSP/UsuarioBuscar.jsp";
@@ -71,7 +71,7 @@ public class BuscarUsuarioController extends HttpServlet {
 					request.setAttribute("usuario", usuario);
 					System.out.println("ha buscado este usuario"+usuario);
 					
-					Set<Telefono> telefonos = telefonoDAO.findByUsuarioId(usuario.getCedula());
+					java.util.List<Telefono> telefonos =  telefonoDAO.findByUsuarioId(usuario.getCedula());
 					request.setAttribute("telefonos", telefonos);
 					System.out.println("ha ontenido las siguentes telefonos"+telefonos);
 					url = "/JSP/UsuarioBuscar.jsp";	
